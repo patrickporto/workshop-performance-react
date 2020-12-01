@@ -7,16 +7,8 @@ const areEqual = (prevProps, nextProps) => {
 }
 
 export const Post = SortableElement(React.memo(({ post }) => {
-
-    if (post.albumId === 2) {
-        return (<div>
-            <div>Album 2</div>
-            <img src={post.url} alt={post.title} />
-            <h3>{post.title}</h3>
-        </div>)
-    }
-
     return (<div>
+        {post.albumId === 2 && <div>Album 2</div>}
         <img src={post.url} alt={post.title} />
         <h3>{post.title}</h3>
     </div>)
