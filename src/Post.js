@@ -2,7 +2,7 @@ import React from "react"
 import { SortableElement } from 'react-sortable-hoc';
 
 
-export const Post = SortableElement(({ post }) => {
+export const Post = SortableElement(React.memo(({ post }) => {
 
     if (post.albumId === 2) {
         return (<div>
@@ -16,4 +16,4 @@ export const Post = SortableElement(({ post }) => {
         <img src={post.url} alt={post.title} />
         <h3>{post.title}</h3>
     </div>)
-})
+}))

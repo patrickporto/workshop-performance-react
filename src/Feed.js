@@ -3,7 +3,7 @@ import { Post } from "./Post"
 import { SortableContainer } from 'react-sortable-hoc';
 import LazyLoad from 'react-lazyload';
 
-export const Feed = SortableContainer(({ posts }) => {
+export const Feed = SortableContainer(React.memo(({ posts }) => {
     return <ul>
         {posts.map((post, index) => (
             <LazyLoad unmountIfInvisible>
@@ -11,4 +11,4 @@ export const Feed = SortableContainer(({ posts }) => {
             </LazyLoad>
         ))}
     </ul>
-})
+}))
