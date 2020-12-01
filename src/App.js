@@ -12,7 +12,7 @@ function App() {
   }, [])
   const handleSortEnd = useCallback(({ oldIndex, newIndex }) => {
     setPosts(arrayMove(posts, oldIndex, newIndex));
-  }, [])
+  }, [posts])
   return (
     <Feed lockAxis="y" posts={posts} onSortEnd={handleSortEnd} />
   );
