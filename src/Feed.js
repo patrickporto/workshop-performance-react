@@ -1,14 +1,27 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { Post } from "./Post"
 import { SortableContainer } from 'react-sortable-hoc';
-import LazyLoad from 'react-lazyload';
+import { FixedSizeList as List } from 'react-window';
 
-export const Feed = SortableContainer(React.memo(({ posts }) => {
+
+export const Feed = SortableContainer(({ posts }) => {
+    const renderRow = useCallback(({ index, style }) => {
+        const post = posts[index]
+        return (
+            <li key={post.id} style={style}>
+                <Post index={index} post={post} />
+            </li>
+        )
+    }, [posts])
     return <ul>
-        {posts.map((post, index) => (
-            <LazyLoad unmountIfInvisible>
-                <Post key={index} index={index} post={post} />
-            </LazyLoad>
-        ))}
+        <List
+            itemCount={posts.length}
+            itemSize={750}
+            width={window.innerWidth}
+            height={window.innerHeight}
+            overscanCount={3}
+        >
+            {renderRow}
+        </List>
     </ul>
-}))
+})
