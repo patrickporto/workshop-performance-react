@@ -9,14 +9,14 @@ export const Feed = SortableContainer(({ posts }) => {
         const post = posts[index]
         return (
             <li key={post.id} style={style}>
-                <Post index={index} post={post} />
+                <Post index={index} post={post} imgStyle={{ maxHeight: 200 }} />
             </li>
         )
     }, [posts])
     return <ul>
         <List
             itemCount={posts.length}
-            itemSize={750}
+            itemSize={270}
             width={window.innerWidth}
             height={window.innerHeight}
             overscanCount={3}
